@@ -1,27 +1,28 @@
 import { useState } from "react";
+import cert from "../../cert.png"; // Import the certificate image
 
 export function Landing() {
   const [showCertificate, setShowCertificate] = useState(false);
 
   return (
-    <main className="flex items-center justify-center pt-16 pb-4">
+    <main className="flex min-h-screen flex-col items-center justify-center pt-16 pb-4">
       <div className="flex-1 flex flex-col items-center gap-16 min-h-0">
         <header className="flex flex-col items-center gap-9">
           <div className="w-[500px] max-w-[100vw] p-4">
             <h1 className="text-4xl font-bold text-center">Austin Lothenbach</h1>
             <h2 className="text-2xl font-semibold text-center space-y-6">Senior Support Engineer</h2>
-            <h3 className="mt-2 text-xs text-center text-gray-600 dark:text-gray-400">
+            <h3 className="mt-2 text-xs text-center text-gray-400">
               10+ years of Support Engineering experience, currently learning Cloud Engineering and DevOps practices, with a focus on AWS and Kubernetes.
             </h3>
           </div>
         </header>
         <div className="w-full max-w-4xl space-y-6 px-4">
-          <section className="rounded-3xl border border-gray-200 bg-white/60 p-6 shadow-sm dark:border-gray-700 dark:bg-gray-900/60">
-            <h2 className="mb-5 text-center text-2xl font-semibold text-gray-900 dark:text-gray-100">
+          <section className="rounded-3xl border border-gray-700 bg-gray-900/60 p-6 shadow-sm">
+            <h2 className="mb-5 text-center text-2xl font-semibold text-gray-100 dark:text-gray-100">
               Technical Skills
             </h2>
             <div className="grid grid-cols-2 gap-x-12 gap-y-3 text-sm sm:text-base">
-              <ul className="space-y-3 text-gray-700 dark:text-gray-200">
+              <ul className="space-y-3 text-gray-200 dark:text-gray-200">
                 {technicalSkills.slice(0, 4).map((skill) => (
                   <li key={skill} className="flex items-center gap-3">
                     <span className="h-2.5 w-2.5 rounded-full bg-[#E2703E] text-center" />
@@ -39,7 +40,7 @@ export function Landing() {
                   </li>
                 ))}
               </ul>
-              <ul className="space-y-3 text-gray-700 dark:text-gray-200">
+              <ul className="space-y-3 text-gray-200">
                 {technicalSkills.slice(4, 8).map((skill) => (
                   <li key={skill} className="flex items-center gap-3">
                     <span className="h-2.5 w-2.5 rounded-full bg-[#E2703E]" />
@@ -50,7 +51,7 @@ export function Landing() {
             </div>
           </section>
 
-          <section className="rounded-3xl border border-gray-200 bg-white/60 p-6 shadow-sm dark:border-gray-700 dark:bg-gray-900/60">
+          <section className="rounded-3xl border border-gray-700 bg-gray-900/60 p-6 shadow-sm">
             <h2 className="mb-5 text-center text-2xl font-semibold text-gray-900 dark:text-gray-100">
               Work Experience
             </h2>
@@ -58,12 +59,12 @@ export function Landing() {
               {workExperience.map(({ title, company, dates, bullets }) => (
                 <article
                   key={company}
-                  className="rounded-2xl border border-gray-200 bg-[#1F2823] p-4 dark:border-gray-600 dark:bg-[#1F2823]"
+                  className="rounded-2xl border border-gray-600 bg-[#1F2823] p-4"
                 >
                   <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100">{title}</h3>
                   <p className="mt-1 text-md font-medium text-[#E2703E] dark:text-[#E2703E]">{company}</p>
-                  <p className="mt-1 text-xs text-gray-600 dark:text-gray-300 italic">{dates}</p>
-                  <ul className="mt-3 list-disc space-y-2 pl-5 text-sm text-gray-700 dark:text-gray-200">
+                  <p className="mt-1 text-xs text-gray-300 italic">{dates}</p>
+                  <ul className="mt-3 list-disc space-y-2 pl-5 text-sm text-gray-200">
                     {bullets.map((bullet) => (
                       <li key={bullet}>{bullet}</li>
                     ))}
@@ -81,7 +82,7 @@ export function Landing() {
           </section>
         </div>
       </div>
-      <footer className="fixed bottom-4 right-4 text-sm text-gray-600 dark:text-gray-400">
+      <footer className="mt-8 self-end px-4 text-sm text-gray-400">
         <p>© Austin Lothenbach - 2026</p>
       </footer>
       {showCertificate && (
@@ -104,8 +105,8 @@ export function Landing() {
             >
               ×
             </button>
-            <img
-              src="app/landing/aws-cloud-practitioner.png"
+              <img
+                src={cert}
               alt="AWS Certified Cloud Practitioner Certificate"
               className="max-h-[80vh] max-w-full object-contain"
             />
