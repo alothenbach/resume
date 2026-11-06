@@ -10,8 +10,8 @@ body {
   background-color: #475D51;
   color: #FEFADF;
 
-  @media (prefers-color-scheme: dark) {
-    color-scheme: dark;
+  @media (prefers-color-scheme: light) {
+    color-scheme: light;
   }
 }
 

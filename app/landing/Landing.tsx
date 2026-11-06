@@ -1,12 +1,16 @@
+import { useState } from "react";
+
 export function Landing() {
+  const [showCertificate, setShowCertificate] = useState(false);
+
   return (
     <main className="flex items-center justify-center pt-16 pb-4">
       <div className="flex-1 flex flex-col items-center gap-16 min-h-0">
         <header className="flex flex-col items-center gap-9">
           <div className="w-[500px] max-w-[100vw] p-4">
             <h1 className="text-4xl font-bold text-center">Austin Lothenbach</h1>
-            <h2 className="text-2xl font-semibold text-center">Senior Support Engineer</h2>
-            <h3 className="text-xs text-center text-gray-600 dark:text-gray-400">
+            <h2 className="text-2xl font-semibold text-center space-y-6">Senior Support Engineer</h2>
+            <h3 className="mt-2 text-xs text-center text-gray-600 dark:text-gray-400">
               10+ years of Support Engineering experience, currently learning Cloud Engineering and DevOps practices, with a focus on AWS and Kubernetes.
             </h3>
           </div>
@@ -21,7 +25,17 @@ export function Landing() {
                 {technicalSkills.slice(0, 4).map((skill) => (
                   <li key={skill} className="flex items-center gap-3">
                     <span className="h-2.5 w-2.5 rounded-full bg-[#E2703E] text-center" />
-                    <span>{skill}</span>
+                    {skill === "AWS - Certified Cloud Practitioner" ? (
+                      <button
+                        type="button"
+                        onClick={() => setShowCertificate(true)}
+                        className="flex-1 text-center underline underline-offset-2 hover:text-[#E2703E]"
+                      >
+                        {skill}
+                      </button>
+                    ) : (
+                      <span className="flex-1 text-center">{skill}</span>
+                    )}
                   </li>
                 ))}
               </ul>
@@ -29,7 +43,7 @@ export function Landing() {
                 {technicalSkills.slice(4, 8).map((skill) => (
                   <li key={skill} className="flex items-center gap-3">
                     <span className="h-2.5 w-2.5 rounded-full bg-[#E2703E]" />
-                    <span>{skill}</span>
+                    <span className="flex-1 text-center">{skill}</span>
                   </li>
                 ))}
               </ul>
@@ -57,9 +71,47 @@ export function Landing() {
                 </article>
               ))}
             </div>
+            <div className="mt-4 flex justify-center"><a
+            href="https://www.linkedin.com/in/austin-lothenbach-988a39155/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-[#FFFFFF] underline hover:text-[#E2703E] transition-colors duration-300"
+          >LinkedIn
+          </a></div>
           </section>
         </div>
       </div>
+      <footer className="fixed bottom-4 right-4 text-sm text-gray-600 dark:text-gray-400">
+        <p>© Austin Lothenbach - 2026</p>
+      </footer>
+      {showCertificate && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 p-4"
+          onClick={() => setShowCertificate(false)}
+        >
+          <div
+            role="dialog"
+            aria-modal="true"
+            aria-label="AWS Certified Cloud Practitioner Certificate"
+            className="relative max-h-[90vh] max-w-3xl rounded-xl bg-white p-4 shadow-xl"
+            onClick={(event) => event.stopPropagation()}
+          >
+            <button
+              type="button"
+              onClick={() => setShowCertificate(false)}
+              aria-label="Close certificate"
+              className="absolute right-2 top-2 rounded-full bg-white px-3 py-1 text-xl text-gray-900 shadow hover:text-[#E2703E]"
+            >
+              ×
+            </button>
+            <img
+              src="app/landing/aws-cloud-practitioner.png"
+              alt="AWS Certified Cloud Practitioner Certificate"
+              className="max-h-[80vh] max-w-full object-contain"
+            />
+          </div>
+        </div>
+      )}
     </main>
   );
 }
@@ -68,7 +120,7 @@ const technicalSkills = [
   "AWS - Certified Cloud Practitioner",
   "SQL",
   "Root Cause Analysis (RCA)",
-  "Grafana",
+  "React.js - This page was built using React!",
   "Project Management",
   "Bash Scripting",
   "Cross-Region Coordination",

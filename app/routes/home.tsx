@@ -3,8 +3,8 @@ import { Landing } from "../landing/Landing";
 
 export function meta({}: Route.MetaArgs) {
   return [
-    { title: "New React Router App" },
-    { name: "description", content: "Welcome to React Router!" },
+    { title: "Austin Lothenbach - Senior Support Engineer" },
+    { name: "description", content: "Welcome to my web page!" },
   ];
 }
 
