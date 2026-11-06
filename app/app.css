@@ -7,9 +7,24 @@
 
 html,
 body {
-  @apply bg-white dark:bg-gray-950;
+  background-color: #475D51;
+  color: #FEFADF;
 
   @media (prefers-color-scheme: dark) {
     color-scheme: dark;
   }
+}
+
+h1 {
+  color: #E2703E;
+}
+h2{
+  color: #FEFADF
+}
+h3 {
+  color: #FFFFFF;
+}
+
+section {
+  background-color:#33423A
 }
