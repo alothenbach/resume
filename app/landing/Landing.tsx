@@ -12,45 +12,54 @@ export function Landing() {
             <h1 className="text-4xl font-bold text-center">Austin Lothenbach</h1>
             <h2 className="text-2xl font-semibold text-center space-y-6">Senior Support Engineer</h2>
             <h3 className="mt-2 text-xs text-center text-gray-400">
-              10+ years of Support Engineering experience, currently learning Cloud Engineering and DevOps practices, with a focus on AWS and Kubernetes.
+              SaaS Technical Operations | AWS Cloud Infrastructure | Automation
             </h3>
           </div>
         </header>
+        
         <div className="w-full max-w-4xl space-y-6 px-4">
+          <section className="rounded-3xl border border-gray-700 bg-gray-900/60 p-6 shadow-sm">
+            <h2 className="mb-4 text-center text-2xl font-semibold text-gray-100 dark:text-gray-100">
+              Summary
+            </h2>
+            <p className="text-center text-xs leading-relaxed text-gray-200 sm:text-sm">
+              Technical Operations Professional with 10 years of experience supporting SaaS platforms, managing customer production environments, and improving operational efficiency through automation. Experienced in AWS cloud services, Linux-based environments, SQL, Bash scripting, infrastructure tooling, and CI/CD pipeline operations. Background includes maintaining cloud-hosted environments, supporting technical integrations, implementing automated workflows, and collaborating with engineering teams to resolve complex technical issues. AWS Certified Cloud Practitioner with growing hands-on experience in cloud infrastrucutre, infrastucture as code, and DevOps practices.
+            </p>
+          </section>
+
           <section className="rounded-3xl border border-gray-700 bg-gray-900/60 p-6 shadow-sm">
             <h2 className="mb-5 text-center text-2xl font-semibold text-gray-100 dark:text-gray-100">
               Technical Skills
             </h2>
-            <div className="grid grid-cols-2 gap-x-12 gap-y-3 text-sm sm:text-base">
-              <ul className="space-y-3 text-gray-200 dark:text-gray-200">
-                {technicalSkills.slice(0, 4).map((skill) => (
-                  <li key={skill} className="flex items-center gap-3">
-                    <span className="h-2.5 w-2.5 rounded-full bg-[#E2703E] text-center" />
-                    {skill === "AWS - Certified Cloud Practitioner" ? (
-                      <button
-                        type="button"
-                        onClick={() => setShowCertificate(true)}
-                        className="flex-1 text-center underline underline-offset-2 hover:text-[#E2703E]"
-                      >
-                        {skill}
-                      </button>
-                    ) : (
-                      <span className="flex-1 text-center">{skill}</span>
-                    )}
-                  </li>
-                ))}
-              </ul>
-              <ul className="space-y-3 text-gray-200">
-                {technicalSkills.slice(4, 8).map((skill) => (
-                  <li key={skill} className="flex items-center gap-3">
-                    <span className="h-2.5 w-2.5 rounded-full bg-[#E2703E]" />
-                    <span className="flex-1 text-center">{skill}</span>
-                  </li>
-                ))}
-              </ul>
+            <div className="grid gap-4 text-xs sm:text-sm">
+              {technicalSkills.map(({ category, skills }) => (
+                <section key={category}>
+                  <h3 className="flex items-center gap-3 font-semibold text-gray-100">
+                    <span className="h-2.5 w-2.5 shrink-0 rounded-full bg-[#E2703E]" />
+                    {category}
+                  </h3>
+                  <p className="mt-1 pl-6 text-gray-200 dark:text-gray-200">
+                    {skills.map((skill) => (
+                      <span key={skill}>
+                        {skill === "AWS (EC2, S3, Route 53, Lambda, RDS, VPC) - Certified Cloud Practitioner" ? (
+                          <button
+                            type="button"
+                            onClick={() => setShowCertificate(true)}
+                            className="underline underline-offset-2 hover:text-[#E2703E]"
+                          >
+                            {skill}
+                          </button>
+                        ) : (
+                          <span>{skill}</span>
+                        )}
+                        {skill !== skills[skills.length - 1] && " · "}
+                      </span>
+                    ))}
+                  </p>
+                </section>
+              ))}
             </div>
           </section>
-
           <section className="rounded-3xl border border-gray-700 bg-gray-900/60 p-6 shadow-sm">
             <h2 className="mb-5 text-center text-2xl font-semibold text-gray-900 dark:text-gray-100">
               Work Experience
@@ -80,7 +89,52 @@ export function Landing() {
           >LinkedIn
           </a></div>
           </section>
+
+          <section className="rounded-3xl border border-gray-700 bg-gray-900/60 p-6 shadow-sm">
+            <h2 className="mb-5 text-center text-2xl font-semibold text-gray-100 dark:text-gray-100">
+              Personal Projects
+            </h2>
+            <div className="grid gap-4 md:grid-cols-1">
+              {personalProjects.map(({ title, bullets }) => (
+                <article
+                  key={title}
+                  className="rounded-2xl border border-gray-600 bg-[#1F2823] p-4"
+                >
+                  <h3 className="text-lg font-semibold text-gray-100">{title}</h3>
+                  <ul className="mt-3 list-disc space-y-2 pl-5 text-sm text-gray-200">
+                    {bullets.map((bullet) => (
+                      <li key={bullet}>{bullet}</li>
+                    ))}
+                  </ul>
+                </article>
+              ))}
+            </div>
+          </section>
+
+          <section className="rounded-3xl border border-gray-700 bg-gray-900/60 p-6 shadow-sm">
+            <h2 className="mb-5 text-center text-2xl font-semibold text-gray-100 dark:text-gray-100">
+              Additional Technical Experience
+            </h2>
+            <div className="grid gap-4 md:grid-cols-1">
+              {additionalTechnicalExperience.map(({ title, company, dates, bullets }) => (
+                <article
+                  key={company}
+                  className="rounded-2xl border border-gray-600 bg-[#1F2823] p-4"
+                >
+                  <h3 className="text-lg font-semibold text-gray-100">{title}</h3>
+                  <p className="mt-1 text-md font-medium text-[#E2703E]">{company}</p>
+                  <p className="mt-1 text-sm text-gray-200">{dates}</p>
+                  <ul className="mt-3 list-disc space-y-2 pl-5 text-sm text-gray-200">
+                    {bullets.map((bullet) => (
+                      <li key={bullet}>{bullet}</li>
+                    ))}
+                  </ul>
+                </article>
+              ))}
+            </div>
+          </section>
         </div>
+        
       </div>
       <footer className="mt-8 self-end px-4 text-sm text-gray-400">
         <p>© Austin Lothenbach - 2026</p>
@@ -118,14 +172,58 @@ export function Landing() {
 }
 
 const technicalSkills = [
-  "AWS - Certified Cloud Practitioner",
-  "SQL",
-  "Root Cause Analysis (RCA)",
-  "React.js - This page was built using React!",
-  "Project Management",
-  "Bash Scripting",
-  "Cross-Region Coordination",
-  "Workforce Planning",
+  {
+    category: "Cloud & Infrastructure",
+    skills: ["AWS (EC2, S3, Route 53, Lambda, RDS, VPC) - Certified Cloud Practitioner", "Terraform (Foundational)", "VirtualBox & VMWare"]
+  },
+  {
+    category: "Operating Systems & Networking",
+    skills: ["Linux/Ubuntu (Foundational)", "Windows Server (Foundational)", "Networking (TCP/IP, DNS, DHCP, VPN)"]
+  },
+  {
+    category: "Programming & Scripts",
+    skills: ["Python", "JavaScript", "React", "Bash", "SQL", "HTML/CSS"],
+  },
+  {
+    category: "Development & Integration Tools",
+    skills: ["GitLab CI/CD", "Azure DevOps", "VS Code", "REST APIs", "Webhooks", "MQTT", "HTTP Connectors", "GraphQL", "Postman"],
+  },
+  {
+    category: "Systems Administration & Monitoring",
+    skills: ["Active Directory", "Google Workspace Administration", "Grafana", "SQL Server Management Studio", "Jira"],
+  },
+];
+
+const personalProjects = [
+  {
+    title: "AWS - Hosted Personal Website | austinlothenbach.com",
+    bullets: ["Deployed a personal website (This one!) using AWS S3 static website hosting.",
+      "Developed the website using React and TypeScript in VSCode on an Ubuntu environment running within VirtualBox.",
+      "Configured Amazon Route 53 to associate a custom domain with the hosted website.", 
+      "Gained hands-on experience deploying and managing a personal web presence using AWS cloud services."
+    ]
+  },
+];
+
+const additionalTechnicalExperience = [
+  {
+    title: "Network Technician",
+    company: "vRad",
+    dates: "2015 - 2016",
+    bullets: ["Maintained and troubleshot Cisco VPN connections supporting secure network connectivity between hospitals, clinics, and remote radiologists.", 
+      "Diagnosed connectivity issues affecting access to medical imaging systems and remote diagnostic workflows.",
+      "Supported reliable communication between healthcare facilities and remote technical users by investigating and resolve VPN-related network issues."
+    ],
+  },
+  {
+    title: "IT Technician",
+    company: "HOM Furniture",
+    dates: "2014 - 2015",
+    bullets: ["Provided IT support across multiple retail locations, troubleshooting desktop computers, printers, wireless access points, and general connectivity issues.",
+      "Administered Windows Servers and Active Directory accounts, groups, and permissions, including basic Group Policy administration.",
+      "Managed Google Workspace user accounts and email access, including account creation and deactivation.",
+    ],
+  },
 ];
 
 const workExperience = [
@@ -134,13 +232,12 @@ const workExperience = [
     company: "Solifi",
     dates: "August 2022 - October 2026",
     bullets: [
-      "Support a growing customer count year-over-year from 23 to 52 and counting.",
-      "Created streamlined processes for internal and external service requests and escalations.",
-      "Acted as Project Manager for new customer onboarding from our Professial Services Team.",
-      "Faciltated efforts to automate daily customer tasks using Bash scripts and automation tools, achieved 96% adoption rate on automation for all tasks.",
-      "Maintained and serviced internal EC2 Linux test environments and customer PROD and UAT environments using AWS, SQL, Terraform, and Gitlab pipelines.",
-      "Developed and maintained internal policy documentation to support global team expansion and integration with other teams.",
-      "Administrative responsibilites such as workforce planning, candidate interviews, PTO approval, and customer onboarding."
+      "Supported maintenance of Linux-based AWS EC2 test environments and customer production and UAT environments, utilizing AWS, SQL, Terraform, and GitLab pipelines.",
+      "Developed and implemented Bash automation solutions for recurring customer tasks, achieving a 96% adoption rate for automation across eligible workflows.",
+      "Supported Managed Services growth from 23 to over 50 customers by establishing scalable operational processes and streamlining internal and external service requests.",
+      "Coordinated customer onboarding projects and technical handoffs between Professional Services and Managed Services teams.",
+      "Developed and maintained operational documentation and standardized procedures to support global team expansion and cross-functional collaboration.",
+      "Managed team operations, including workforce planning, candidate interviews, PTO approvals, and customer onboarding presentations, while leading 5-10 application management specialists.",
     ],
   },
   {
@@ -148,9 +245,9 @@ const workExperience = [
     company: "Calabrio",
     dates: "April 2022 - July 2022",
     bullets: [
-      "Resolved technical issues for both on-prem and cloud-based instances of Calabrio ONE.",
-      "Verified customer data integrity and setups using SQL Server Management Studio to maintain system reliability.",
-      "Managed escalations and executed predefined scripts in Azure DevOps for customer instances and databases.",
+      "Troubleshot technical issues across on-premise and cloud-based Calabrio WFM environments.",
+      "Utilized SQL Server Management Studio to investigate customer data integrity and database configurations.",
+      "Managed technical escalations through ServiceNow and executed predefined scripts through Azure DevOps for customer environments and databases."
     ],
   },
   {
@@ -158,9 +255,10 @@ const workExperience = [
     company: "Exosite",
     dates: "February 2021 - April 2022",
     bullets: [
-      "Provided written support via ticketing portal and escalated behaviors and feature requests to ensure timely resolution.",
-      "Assisted in configuring IoT connectors through API/Webhooks, MQTT, or HTTP connectors, creating custom transformations and insights for IoT hardware while developing custom Python or JavaScript code for customers.",
-      "Maintained and created documentation for new hardware and software partners, answering and creating community forum posts to enhance resourrces for end-users.",
+      "Supported customer IoT integrations through APIs, Webhooks, MQTT, and HTTP connectors.",
+      "Developed and modified custom Python and JavaScript code to support customer-specific integrations, data transformations, and IoT hardware connectivity.",      "Maintained and created documentation for new hardware and software partners, answering and creating community forum posts to enhance resourrces for end-users.",
+      "Investigated technical issues through customer support channels and coordinated escalations and feature requests with internal teams.",
+      "Developed technical documentation for hardware and software integrations and maintained community knowledge resources."
     ],
   },
   {
@@ -168,10 +266,10 @@ const workExperience = [
     company: "Alarm.com",
     dates: "October 2016 - February 2021",
     bullets: [
-      "Collaborated with Central Station partners to integrate backend APIs, enhancing seamless functionality for Dealer partners.",
-      "Worked with Product Managers to determine priority levels of various ongoing projects and relay support team concerns or needs.",
-      "Ensured Tier II Specialists handled escalations promptly, offering assistance and acting as a liaison between our Support Team and Software/Quality Engineers.",
-      "Utilized Jira to manage creation, assignment, and timely completion of bug fixes and software enhancement tickets."
+      "Supported backend API integrations between Central Station partners and Alarm.com dealer platforms.",
+      "Collaborated with Product Managers to prioritize technical projects and communicate operational requirements to engineering teams.",
+      "Acted as a technical liaison between Tier 2 Support Specialists and Software/Quality Engineering teams to facilitate escaltion resolution.",
+      "Utilized Jira to create, assign, track, and coordinate software defect and enhancement requests."
     ],
   },
 ];
